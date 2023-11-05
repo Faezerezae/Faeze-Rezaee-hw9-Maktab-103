@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  position: relative;
+}
+.el{
+  width:200px;
+}
+
+.el--1 {
+  height: 150px;
+}
+.el--2 {
+  height: 300px;
+}
+.el--3 {
+  height: 300px;
+}
+.el--4 {
+  height: 148px;
+}
+.el--5 {
+  height: 145px;
+}
+.el--6 {
+  height: 300px;
+}
+.el--7 {
+  height: 300px;
+}
+.el--8 {
+  height: 143px;
+}
+
+.container {
+  width: 880px;
+  background-color: #79797932;
+  display: grid;
+  grid-template-columns:repeat(4, 1fr);
+  margin: 20px auto;
+  align-items: start;
+  justify-items: center;
+}
+
+.container div{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+/**************************/
+/* BELOW 944px (Tablets)*/
+/**************************/
+
+@media (max-width: 59em) {
+
+  .container {
+    width: 600px;
+    grid-template-columns: repeat(2,2fr);
+    gap: 20px;
+  }
+
+  .el{
+    width:100%;
+  }
+}
+
+/**************************/
+/* BELOW 544px (Phones) */
+/**************************/
+
+@media (max-width: 40em) {
+  .container {
+    width: 340px;
+    grid-template-columns:1fr;
+  }
+}
+
