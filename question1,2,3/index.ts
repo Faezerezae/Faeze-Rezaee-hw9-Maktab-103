@@ -3,18 +3,24 @@
 //باید ویژگی را به یک شی خاص اضافه کند.
 //سعی کنید شی کاربر را از تابع برگشتی برگردانید.
 //از این کلمه کلیدی برای تنظیم ویژگی در تابع برگشتی استفاده کنید
-const user: any = {};
 
-function setterGenerator(property: string): (value: any) => void {
-  return function(value: any): void {
-    user[property] = value;
+type T = {
+  name?: string;
+};
+
+const setterGenerator = function <T>(property: keyof T) {
+  return function (this: T, value: T[keyof T]): T {
+    this[property] = value;
+    return this;
   };
-}
+};
 
-const nameSetter = setterGenerator('name');
-nameSetter('Jack');
+const user: T = {};
+const nameSetter = setterGenerator<typeof user>("name");
+
+nameSetter.call(user, "Jack");
+
 console.log(user); // { name: 'Jack' }
-
 //question 2
 //تابعی بنویسید که یک نوع عنصر و یک تابع فراخوانی را می گیرد.
 //تابع باید عنصر مربوطه را ایجاد کند، آن را به dom اضافه کند (در هر کجا) سپس مرجع را به callback ارسال کند
